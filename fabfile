@@ -1,0 +1,5 @@
+config.fab_hosts = ['localhost']
+
+def parse():
+	"Parse the HPRD and write protein and interaction files"
+	local('bin/parseHPRD.py data/HPRD_XML_070609')
