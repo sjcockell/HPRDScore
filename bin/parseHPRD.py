@@ -6,7 +6,6 @@
 ##
 
 import sys
-
 import os
 import xml.etree.cElementTree as ET
 
@@ -55,8 +54,8 @@ def main():
                 if name_only(element) == "interactorRef":
                     protein.add_interactor(element.text)
 
-    out1 = open('hprd_interactions', 'w')
-    out2 = open('hprd_proteins', 'w')
+    out1 = open('out/hprd_interactions', 'w')
+    out2 = open('out/hprd_proteins', 'w')
     for i in protein_list:
         if i.get_hprd_id() != None:
             print i.get_hprd_id() + '\t',
