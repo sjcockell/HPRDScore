@@ -10,7 +10,6 @@ import os
 import xml.etree.cElementTree as ET
 
 def main():
-
 	directory = sys.argv[1]
 
 	filelist = os.listdir(directory)
@@ -23,13 +22,12 @@ def main():
 				
 		if file.split(".")[1] == "xml":
 
-			if count > 10:
-				break
+			#if count > 10:
+			#	break
 				   
 			count += 1
 			print(file)
 			for events in ET.iterparse(directory + "/" + file):
-
 				## get element
 				element = events[1]
 
@@ -59,21 +57,25 @@ def main():
 				#	for child in children:
 				#		if name_only(child) == 'interactor':
 				#			print child.attrib.get('id')
-				if name_only(element) == 'interactionList':
-					interactions = element.getiterator('{net:sf:psidev:mi}interaction')
-					for interaction in interactions:
-						participants = interaction.find('{net:sf:psidev:mi}participantList').getiterator('{net:sf:psidev:mi}participant')
-						participant_ids = []
-						for participant in participants:
-							ref = participant.find('{net:sf:psidev:mi}interactorRef').text
-							participant_ids.append(ref)
-						x = 0
-						for pid in participant_ids:
-							if pid == protein.get_hprd_id():
-								x += 1
-						print hprd_id()
-						if x > 1:
-							print 'Self Interactor'
+				#if name_only(element) == 'interactionList':
+				#	self_interactor = False
+				#	interactions = element.getiterator('{net:sf:psidev:mi}interaction')
+				#	for interaction in interactions:
+				#		participants = interaction.find('{net:sf:psidev:mi}participantList').getiterator('{net:sf:psidev:mi}participant')
+				#		participant_ids = []
+				#		for participant in participants:
+				#			ref = participant.find('{net:sf:psidev:mi}interactorRef').text
+				#			participant_ids.append(ref)
+				#		print participant_ids
+				#		for pid in participant_ids:
+				#			x = 0
+				#			for p in participant_ids:
+				#				if pid == p:
+				#					x += 1
+				#			if x > 1:
+				#				self_interactor = True
+				#		if self_interactor:
+				#			print 'Self Interactor'
 	
 	
 	out1 = open('out/hprd_interactions', 'w')
@@ -154,6 +156,7 @@ class HPRDProtein:
 		
 if __name__ == '__main__':
 	main()
+
 
 
 

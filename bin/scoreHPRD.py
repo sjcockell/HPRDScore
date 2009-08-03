@@ -44,8 +44,8 @@ def main():
 		ids = line.rstrip().split('\t')
 		try:
 			# might not always be GO terms - split() won't create list element if there isn't
-			go_list1 = proteinDictionary[ids[0]]['GO_IDS']
-			go_list2 = proteinDictionary[ids[1]]['GO_IDS']
+			go_list1 = proteinDictionary[ids[1]]['GO_IDS']
+			go_list2 = proteinDictionary[ids[4]]['GO_IDS']
 		except KeyError:
 			go_list1 = None
 			go_list2 = None
@@ -62,12 +62,12 @@ def main():
 			go1.close()
 			go2.close()
 			# parseHtml parses the results of the web form call to G-Sesame
-			print ids[0]+'\t'+ids[1]+'\t'+parseHtml(gSesameCall())
-			mainOut.write(ids[0]+'\t'+ids[1]+'\t'+parseHtml(gSesameCall())+"\n")
+			print ids[1]+'\t'+ids[4]+'\t'+parseHtml(gSesameCall())
+			mainOut.write(ids[1]+'\t'+ids[4]+'\t'+parseHtml(gSesameCall())+"\n")
 		else:
 			# want entries for interactions which don't score
-			print ids[0]+'\t'+ids[1]+'\t'+'None'
-			mainOut.write(ids[0]+'\t'+ids[1]+'\t'+'None'+"\n")
+			print ids[1]+'\t'+ids[4]+'\t'+'None'
+			mainOut.write(ids[1]+'\t'+ids[4]+'\t'+'None'+"\n")
 	mainOut.close()
 
 

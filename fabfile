@@ -3,3 +3,7 @@ config.fab_hosts = ['localhost']
 def parse():
 	"Parse the HPRD and write protein and interaction files"
 	local('bin/parseHPRD.py data/HPRD_XML_070609')
+
+def score():
+	"Score the HPRD from the distributed Flat Files"
+	local('bin/scoreHPRD.py out/hprd_proteins data/HPRD_FLAT_FILES_070609/BINARY_PROTEIN_PROTEIN_INTERACTIONS.txt')
